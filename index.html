@@ -11,6 +11,7 @@
     <div id="app">
         <!--{{person.name}} script data -> person 안에 name을 지정해주어서 name로 뜨ㅣ운다.-->
         {{nextYear('안녕')}} <!--함수를 불러와서 사용 가능 -->
+        <input type="text" v-bind:value="inputData">
     </div>
     <script>
         new Vue({
@@ -19,7 +20,8 @@
                 person : {
                     name : "이수진",
                     age : 32
-                }
+                },
+                inputData:'hello'
             },
             methods:{ //함수를 지정해 줄 수 있다. 
                 nextYear(greating){ // 메소드 안에 매개변수로 지정해서 받아서 사용할 수 있다.
