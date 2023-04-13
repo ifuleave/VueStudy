@@ -15,7 +15,7 @@
         <button v-on:click="alert">Click Me</button><br/><br/><br/><br/>
         <form v-on:submit.prevent="submit"> <!--.prevent -> submit 할때 리로드 막기 (vue공식문서에있음)-->
             <!-- <input type="text" :value="text" @keyup="updateText"><br/> -->
-            <input type="text" v-model="text"><br/> <!--양방향 바인딩은 v-model을 사용하면 된다.-->
+            <input type="text" v-model="text"><br/> <!--↑위의 것을 ->으로 변경: 양방향 바인딩은 v-model을 사용하면 된다.-->
             {{ text }}<br/>
             <button type="submit">submit</button>
         </form>

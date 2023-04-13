@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue 기초 익히기 3_ </title>
+    <title>Vue 기초 익히기 3_ computed속성</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
 </head>
 <body> <!--html 속성에 :(콜론)을 붙이면 데이터 바인딩이 가능하다!!!-->
     <div id="app">
-
+        {{ reversedMessage() }}
+        {{ reversedMessage() }}
+        {{ reversedMessage() }} 
+        <!--중괄호 안에는 자바스크립스 문법이 들어갈 수 있음. .split는 안녕하세요가 하나씩 짤라서 배열에 들어가게 된다.
+        reverse()는 '요'가 제일 앞으로 가게되고 '안'이 젤 뒤로 가게 된다.
+        join은 합쳐져서 string으로 합쳐진다.
+        결과 : '요세하녕안' 이 출력됨 -->
     </div>
     <script>
         new Vue({
             el: "#app",
             data : {
-              
+                message : '헬로우'
             },
             methods:{ 
+                reversedMessage(){ //메소드에서 함수로 쓸때는 div안에서 ()메소드 호출 표시를 꼭 해줘야한다
+                    return this.message.split('').reverse().join('') 
+                }
 
+            },
+            computed:{ // computed로 사용할때는 reversedMessage 로만 사용하면 된다.
+                // reversedMessage(){
+                //     return this.message.split('').reverse().join('') 
+                // }
             }
         })
     </script>
