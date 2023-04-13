@@ -9,6 +9,7 @@
 </head>
 <body> <!--html 속성에 :(콜론)을 붙이면 데이터 바인딩이 가능하다!!!-->
     <div id="app">
+        <button @click="changeMessage">Click</button>
         {{ reversedMessage() }}
         {{ reversedMessage() }}
         {{ reversedMessage() }} 
@@ -24,8 +25,11 @@
                 message : '헬로우'
             },
             methods:{ 
-                reversedMessage(){ //메소드에서 함수로 쓸때는 div안에서 ()메소드 호출 표시를 꼭 해줘야한다
-                    return this.message.split('').reverse().join('') 
+              //  reversedMessage(){ //메소드에서 함수로 쓸때는 div안에서 ()메소드 호출 표시를 꼭 해줘야한다
+              //      return this.message.split('').reverse().join('') 
+             //   },
+                changeMessage(){
+                    this.message = '코지코더';
                 }
 
             },
@@ -33,6 +37,12 @@
                 // reversedMessage(){
                 //     return this.message.split('').reverse().join('') 
                 // }
+                //메소드와 computed의 차이점
+                //computed는 캐싱을 하고 메소드는 캐싱을 하지 않는다
+                //메소드는 methods 의 1번씩 계산하고 나오고
+                //computed는 한번만 계산하고 출력 3군데 한번에 출력 
+                //computed 속성 데이터가 바뀌지 않는 한 한번 계산 된 내용이 저장되어 있다.
+
             }
         })
     </script>
