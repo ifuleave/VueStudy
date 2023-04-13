@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기 2_ 이벤트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+</head>
+<body> <!--html 속성에 :(콜론)을 붙이면 데이터 바인딩이 가능하다!!!-->
+    <div id="app">
+        {{year}}
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+        <button v-on:click="alert">Click Me</button><br/><br/><br/><br/>
+        <form v-on:submit.prevent="submit"> <!--.prevent -> submit 할때 리로드 막기 (vue공식문서에있음)-->
+            <!-- <input type="text" :value="text" @keyup="updateText"><br/> -->
+            <input type="text" v-model="text"><br/> <!--양방향 바인딩은 v-model을 사용하면 된다.-->
+            {{ text }}<br/>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data : {
+                year : 2023,
+                text : 'text'
+            },
+            methods:{ 
+                alert(){
+                    alert('hi~ kosonglee');
+                },
+                plus(){
+                    this.year++;
+                },
+                minus(){
+                    this.year--;
+                },
+                submit(){
+                    alert('submit');
+                    console.log('hello');
+                },
+              //  updateText(event){
+                    // console.log(event);
+                //    this.text = event.target.value; // this.text는 data안에 있는 text를 말함
+                                //target.value는 웹브라우저에서 키보드 입력시 
+                //}
+            }
+        })
+    </script>
+</body>
+</html>
