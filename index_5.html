@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기 5_클래스&스타일바인딩</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        </style>
+        //클래스 이름이 대쉬가 있으면 div에서는 따옴표로  묶어서 사용해야한다. 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+</head>
+<body> <!--html 속성에 :(콜론)을 붙이면 데이터 바인딩이 가능하다!!!-->
+    <div id="app">
+       <div :class="{red: isRed, bold: isBold}">Hello</div>
+       <button @click="update">click</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data : {
+                isRed: false, //false면 스타일적용 안되고, ture가 되면 스타일 적용(빨강,진하게)
+                isBold: false
+            },
+            methods:{ 
+                update(){ //버튼이 update인것을 클릭했을때 
+                    this.isRed= !this.isRed;
+                    this.isBold= !this.isBold;
+                }
+            }
+       
+        })
+    </script>
+</body>
+</html>
