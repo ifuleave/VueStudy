@@ -17,21 +17,22 @@
 </head>
 <body> 
     <div id="app">
-        <template  v-if="number === 1">
+        <!-- <template  v-if="number === 1">
             <div>1</div>
             <div>2</div>
             <div>3</div>
         </template>
-        <div v-else-if="number === 2">Hi</div>
-        <div v-else>No</div><br/>
-        <button @click="increaseNumber">Increase</button>{{number}}<br/>
+        <div v-else-if="number === 2">Hi</div> -->
+        <div v-show="show">Yes</div><br/>
+        <button @click="toggle">Toggle</button><br/>
     </div>
     <script>
         new Vue({
             el: "#app",
             data : {
                 // show: true
-                number : 1
+                number : 1,
+                show:false
 
             },
             methods:{ 
@@ -40,9 +41,20 @@
                     // }
                     increaseNumber(){
                         this.number++;
+                    },
+                    toggle(){
+                        this.show=!this.show;
                     }
                 },        
-        })
+        }) 
     </script>
 </body>
 </html>
+/*
+v-if와 v-show의 차이 
+v-if는 토글 비용이 높고 
+v-show는 초기 렌더링 비용이 더 높다
+매우 자주 바뀌어야 한다면 v-show
+런타임시 조건이 바뀌지 않으면 v-if를 권장
+
+*/
