@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 기초 익히기 4_Watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+</head>
+<body> <!--html 속성에 :(콜론)을 붙이면 데이터 바인딩이 가능하다!!!-->
+    <div id="app">
+        {{message}}<br/>
+        <button @click="changeMessage">Click</button><br/>
+        {{updated}}
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data : {
+                message : '헬로우',
+                updated : '아니요'
+            },
+            methods:{ 
+                changeMessage(){
+                    this.message = '코송이';
+                }
+
+            },
+            computed:{ 
+             reversedMessage(){
+                 return this.message.split('').reverse().join('') 
+               }
+            },
+            watch:{
+                //감사하고 싶은 데이터를 작성
+                message(newVal, oldVal){ //data에 있는 message를 사용하고 싶음(매개변수로 newVal, oldVal), newVal은 새로운 데이터, oldVal그전 데이터가 들어오게된다.
+                    console.log(newVal, oldVal);
+                    this.updated = '네';
+                }
+            }
+        })
+    </script>
+</body>
+</html>
